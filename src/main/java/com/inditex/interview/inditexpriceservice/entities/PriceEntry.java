@@ -14,8 +14,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -56,23 +54,4 @@ public class PriceEntry {
 
   @Enumerated(EnumType.STRING)
   private Currency currency;
-
-  // Custom method for converting between database format and LocalDateTime
-  public void setStartDateFromString(String dateString) {
-    this.startDate =
-        LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
-  }
-
-  public String getStartDateAsString() {
-    return startDate.format(DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
-  }
-
-  public void setEndDateFromString(String dateString) {
-    this.endDate =
-        LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
-  }
-
-  public String getEndDateAsString() {
-    return endDate.format(DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
-  }
 }

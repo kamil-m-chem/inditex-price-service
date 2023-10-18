@@ -98,8 +98,6 @@ class PriceServiceImpTest {
     // Perform the test, which should throw a PriceEntryNotFoundException
     assertThrows(
         PriceEntryNotFoundException.class,
-        () -> {
-          priceService.queryPrice(applicationDate, productId, brandId);
-        });
+        () -> priceService.queryPrice(applicationDate, productId, brandId));
   }
 }
