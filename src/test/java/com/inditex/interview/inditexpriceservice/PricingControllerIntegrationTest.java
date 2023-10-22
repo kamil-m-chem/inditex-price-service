@@ -58,7 +58,10 @@ class PricingControllerIntegrationTest {
     String unreachableApplicationDate = "2222-12-22-22.22.22";
 
     // Perform a GET request to query the price
-    MvcResult result = performGetCall(unreachableApplicationDate).andExpect(status().isNotFound()).andReturn();
+    MvcResult result =
+        performGetCall(unreachableApplicationDate)
+            .andExpect(status().isNotFound())
+            .andReturn();
 
     // Convert the response content to a PriceResponse object
     String content = result.getResponse().getContentAsString();
@@ -67,6 +70,27 @@ class PricingControllerIntegrationTest {
 
     String expectedError = "Price entry not found";
     String expectedMessage = "No matching price entry found.";
+
+    assertEquals(expectedError, errorResponse.error());
+    assertEquals(expectedMessage, errorResponse.message());
+  }
+
+  @Test
+  void getQueryPrice_shouldReturnProperMsg_WhenBrandIdIsNotPassed() throws Exception {
+    // Define the request parameters
+    String applicationDate = "2020-06-14-10.00.00";
+
+    // Perform a GET request to query the price
+    MvcResult result =
+        performGetCallMissingBrandId(applicationDate).andExpect(status().isInternalServerError()).andReturn();
+
+    // Convert the response content to a PriceResponse object
+    String content = result.getResponse().getContentAsString();
+    ObjectMapper objectMapper = new ObjectMapper();
+    ErrorResponse errorResponse = objectMapper.readValue(content, ErrorResponse.class);
+
+    String expectedError = "Internal Server Error";
+    String expectedMessage = "Required request parameter 'brandId' for method parameter type long is not present";
 
     assertEquals(expectedError, errorResponse.error());
     assertEquals(expectedMessage, errorResponse.message());
@@ -84,6 +108,14 @@ class PricingControllerIntegrationTest {
             .param("applicationDate", applicationDate)
             .param("productId", String.valueOf(productId))
             .param("brandId", String.valueOf(brandId))
+            .contentType(MediaType.APPLICATION_JSON));
+  }
+
+  private ResultActions performGetCallMissingBrandId(String applicationDate) throws Exception {
+    return mockMvc.perform(
+        MockMvcRequestBuilders.get("/api/prices")
+            .param("applicationDate", applicationDate)
+            .param("productId", String.valueOf(productId))
             .contentType(MediaType.APPLICATION_JSON));
   }
 }

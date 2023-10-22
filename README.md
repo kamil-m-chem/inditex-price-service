@@ -116,8 +116,8 @@ their details can be found once the application is running at http://localhost:8
 
 ## Code Coverage Analysis
 
-Code coverage analysis is performed using JaCoCo version 0.8.11. Currently, the code coverage stands at 79%. To run code
-coverage analysis, execute the following Maven command:
+Code coverage analysis is performed using JaCoCo version 0.8.11. Currently, the code coverage stands at **82%**. To run
+code coverage analysis, execute the following Maven command:
 
 ```
 mvn clean install
