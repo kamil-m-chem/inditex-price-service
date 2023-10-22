@@ -1,10 +1,12 @@
-package com.inditex.interview.inditexpriceservice;
+package com.inditex.interview.inditexpriceservice.services;
 
+import com.inditex.interview.inditexpriceservice.PriceEntryToResponseMapper;
+import com.inditex.interview.inditexpriceservice.PriceResponse;
 import com.inditex.interview.inditexpriceservice.entities.PriceEntry;
+import com.inditex.interview.inditexpriceservice.exceptions.PriceEntryNotFoundException;
+import com.inditex.interview.inditexpriceservice.repositories.PriceRepository;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import com.inditex.interview.inditexpriceservice.exceptions.PriceEntryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
