@@ -14,6 +14,9 @@ import com.inditex.interview.inditexpriceservice.exceptions.PriceEntryNotFoundEx
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.inditex.interview.inditexpriceservice.repositories.PriceRepository;
+import com.inditex.interview.inditexpriceservice.services.PriceServiceImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

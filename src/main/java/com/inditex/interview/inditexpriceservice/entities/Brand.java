@@ -17,7 +17,6 @@ import lombok.Setter;
 @Builder
 @Table(name = "brands")
 public class Brand {
-  @Id
-  private long brandId;
+  @Id private long brandId;
   private String brandName;
 }

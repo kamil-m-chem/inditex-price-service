@@ -31,6 +31,7 @@ import lombok.ToString;
 @Table(name = "prices")
 public class PriceEntry {
   public static final String DATE_TIME_PATTERN = "yyyy-MM-dd-HH.mm.ss";
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "price_list")

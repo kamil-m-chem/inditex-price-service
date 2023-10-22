@@ -7,18 +7,18 @@ import org.springframework.stereotype.Component;
 public class PriceEntryToResponseMapper {
 
   public PriceResponse mapToResponse(PriceEntry priceEntry) {
-      if (priceEntry == null) {
-          return null;
-      }
-    
-      long brandId = priceEntry.getBrand() != null ? priceEntry.getBrand().getBrandId() : 0;
-    
-      return new PriceResponse(
-          priceEntry.getProductId(),
-          brandId,
-          priceEntry.getId(),
-          priceEntry.getStartDate(),
-          priceEntry.getEndDate(),
-          priceEntry.getPrice());
+    if (priceEntry == null) {
+      return null;
+    }
+
+    long brandId = priceEntry.getBrand() != null ? priceEntry.getBrand().getBrandId() : 0;
+
+    return new PriceResponse(
+        priceEntry.getProductId(),
+        brandId,
+        priceEntry.getId(),
+        priceEntry.getStartDate(),
+        priceEntry.getEndDate(),
+        priceEntry.getPrice());
   }
 }
