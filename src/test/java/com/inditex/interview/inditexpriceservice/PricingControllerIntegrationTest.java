@@ -104,7 +104,7 @@ class PricingControllerIntegrationTest {
 
   private ResultActions performGetCall(String applicationDate) throws Exception {
     return mockMvc.perform(
-        MockMvcRequestBuilders.get("/api/prices")
+        MockMvcRequestBuilders.get("/api/price")
             .param("applicationDate", applicationDate)
             .param("productId", String.valueOf(productId))
             .param("brandId", String.valueOf(brandId))
@@ -113,7 +113,7 @@ class PricingControllerIntegrationTest {
 
   private ResultActions performGetCallMissingBrandId(String applicationDate) throws Exception {
     return mockMvc.perform(
-        MockMvcRequestBuilders.get("/api/prices")
+        MockMvcRequestBuilders.get("/api/price")
             .param("applicationDate", applicationDate)
             .param("productId", String.valueOf(productId))
             .contentType(MediaType.APPLICATION_JSON));

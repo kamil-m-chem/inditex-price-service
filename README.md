@@ -109,7 +109,7 @@ at http://localhost:8080/h2-console/. Use the following JDBC URL, username, and 
 
 To test the API, you can make requests to endpoints like:
 
-    GET http://localhost:8080/api/prices?applicationDate=2020-06-15T00:00:00&productId=35455&brandId=1
+    GET http://localhost:8080/api/price?applicationDate=2020-06-15T00:00:00&productId=35455&brandId=1
 
 You can use a web browser or tools like Postman to make requests. Additional information about available endpoints and
 their details can be found once the application is running at http://localhost:8080/swagger-ui/index.html.

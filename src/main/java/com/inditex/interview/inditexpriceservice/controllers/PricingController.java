@@ -26,7 +26,7 @@ public class PricingController {
     this.priceService = priceService;
   }
 
-  @GetMapping("/prices")
+  @GetMapping("/price")
   @ResponseStatus(HttpStatus.OK)
   @Operation(
       summary = "Get price information by parameters",
